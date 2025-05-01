@@ -1,4 +1,4 @@
 #!/bin/bash
 
-gcc $1 -o output
+gcc src/$1 -o output
 ./output
