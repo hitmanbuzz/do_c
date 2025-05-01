@@ -49,6 +49,11 @@ void InsertEnd(int data, struct Node** headRef) {
 /// @param after `The given node will be inserted after this node`
 /// @param headRef `Head`
 void InsertAfter(int data, int after, struct Node** headRef) {
+    if (*headRef == NULL) {
+        printf("Head is already empty\n");
+        return;
+    }
+
     struct Node* node = (struct Node*) malloc(sizeof(struct Node));
     struct Node* curr = *headRef;
 
