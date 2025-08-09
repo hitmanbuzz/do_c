@@ -148,6 +148,28 @@ void LinkedList::DeleteIndex(unsigned int index) {
    size--;
 }
 
+/// Returns a new linked list which has been reversed.
+//
+/// The original head doesn't get reversed
+Node* LinkedList::Reverse() {
+    if (size == 0) {
+       std::cout << "List is empty";
+       return head;
+    }
+    
+    Node* prev = nullptr;
+    Node* curr = head;
+    
+    while (curr) {
+        Node* next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    
+    return prev;
+}
+
 void LinkedList::print() {
     Node* temp = head;
 
@@ -213,8 +235,19 @@ int main() {
     
     list.DeleteIndex(2);
     list.print();
+    
+    std::cout << "Reversed" << "\n";
+    
+    Node* reveresed = list.Reverse();
+    while (reveresed) {
+        std::cout << reveresed->data << " -> ";
+        reveresed = reveresed->next;
+    }
+    
+    std::cout << "\n";
 
     std::cout << "Linked List Size: " <<  list.get_size() << "\n";
     
     return 0;
+
 }
